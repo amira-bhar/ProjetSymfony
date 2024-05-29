@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}L'AtelierGourmand - Accueil
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<div class="jumbotron">
+			<h1 class="display-4">Bienvenue sur L'Atelier Gourmand</h1>
+			<p class="lead">L'Atelier Gourmand est une application qui va vous permettre de créer des recettes à base d'ingrédients que vous aurez vous-même introduire. Vous pourrez partager vos recettes à la communauté du site, ou bien les garder en privé.</p>
+			<hr class="my-4">
+      {% if not app.user %}
+      
+			<p>Pour commencer, rendez-vous sur la page d'inscription pour utiliser l'application, ou connectez-vous si vous avez déjà un compte.</p>
+			<a class="btn btn-primary btn-lgz" href="{{ path('security.registration') }}" role="button">S'inscrire</a>
+			<a class="btn btn-primary btn-lgz" href="{{ path('security.login') }}" role="button">Se connecter</a>
+      {% endif %}
+		</div>
+
+		<div class="recipes">
+			<h2 class="mt-4">Recettes de la communauté</h2>
+			<div class="d-flex justify-content-between">
+				{% for recipe in recipes %}
+					<div class="card border-primary mb-3" style="max-width: 20rem;">
+						<div class="card-header"><strong>Recette n°{{ recipe.id }}</strong></div>
+						<div class="card-body">
+							<h4 class="card-title">
+								<a href="{{ path('recipe.show', {id: recipe.id}) }}">{{ recipe.name }}</a>
+							</h4>
+							<p class="card-text">{{ recipe.description|slice(0, 100) ~ '...' }}</p>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
