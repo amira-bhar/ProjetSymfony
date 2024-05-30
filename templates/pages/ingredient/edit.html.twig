@@ -12,6 +12,10 @@
 				{{ message }}
 			</div>
 		{% endfor %}
+		{% for message in app.flashes('success') %}
+            {{ message }}
+        {% endfor %}
+		
 		{{ form(form) }}
 		</div>
 	{% endblock %}

@@ -37,7 +37,7 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $choosenUser);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $form->getData()->getPlainPassword()!=NULL) {
             if ($hasher->isPasswordValid($choosenUser, $form->getData()->getPlainPassword())) {
                 $user = $form->getData();
                 $manager->persist($user);

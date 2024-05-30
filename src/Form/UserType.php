@@ -49,6 +49,7 @@ class UserType extends AbstractType
             ]
         ])
         ->add('submit', SubmitType::class, [
+            'label'=> 'Enregistrer les modifications',
             'attr' => [
                 'class' => 'btn btn-primary mt-4'
             ]
