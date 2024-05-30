@@ -52,11 +52,7 @@
 			{% if recipe.time %}
 				<p>Pour
 					{{ recipe.nbPeople }}
-<<<<<<< HEAD
 					personne(s)</p>
-=======
-					personnes</p>
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
 			{% else %}
 				<p><strong>Nombre de personnes</strong> non renseigné</p>
 			{% endif %}
@@ -83,24 +79,17 @@
 			{% endfor %}
 		</div>
 
-<<<<<<< HEAD
 		{% if app.user and recipe.user != app.user %}
-=======
-		{% if app.user %}
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
 		<div class="mark" style="background-color: skyblue;">
 			{{ form(form) }}
 			</div>
 		{% endif %}
 
 
-<<<<<<< HEAD
 		<div class="mt-4">
 			<a href="{{ path('recipe_download_pdf', {'id': recipe.id}) }}" class="btn btn-success">Télécharger</a>
 		</div>
 
 
-=======
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
 		</div>
 	{% endblock %}

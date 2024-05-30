@@ -4,10 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Mark;
 use App\Entity\Recipe;
-<<<<<<< HEAD
 use App\Entity\Ingredient;
-=======
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
 use App\Form\MarkType;
 use App\Form\RecipeType;
 use App\Repository\MarkRepository;
@@ -22,10 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
-<<<<<<< HEAD
 use App\Service\PdfService;
-=======
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
 
 class RecipeController extends AbstractController
 {
@@ -42,19 +36,14 @@ class RecipeController extends AbstractController
     public function index(
         RecipeRepository $repository,
         PaginatorInterface $paginator,
-<<<<<<< HEAD
         Request $request,
         EntityManagerInterface $manager
-=======
-        Request $request
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
     ): Response {
         $recipes = $paginator->paginate(
             $repository->findBy(['user' => $this->getUser()]),
             $request->query->getInt('page', 1),
             10
         );
-<<<<<<< HEAD
     
         // Récupérer les ingrédients associés à l'utilisateur actuel
         $ingredients = $manager->getRepository(Ingredient::class)->findBy(['user' => $this->getUser()]);
@@ -67,12 +56,6 @@ class RecipeController extends AbstractController
                 'recipes' => $recipes,
             ]);
         }
-=======
-
-        return $this->render('pages/recipe/index.html.twig', [
-            'recipes' => $recipes,
-        ]);
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
     }
 
     #[Route('/recette/communaute', 'recipe.community', methods: ['GET'])]
@@ -122,11 +105,7 @@ class RecipeController extends AbstractController
 
             $this->addFlash(
                 'success',
-<<<<<<< HEAD
                 'Votre recette a été créée avec succès !'
-=======
-                'Votre recette a été créé avec succès !'
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
             );
 
             return $this->redirectToRoute('recipe.index');
@@ -137,10 +116,6 @@ class RecipeController extends AbstractController
         ]);
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
     /**
      * This controller allow us to edit a recipe
      *
@@ -167,11 +142,7 @@ class RecipeController extends AbstractController
 
             $this->addFlash(
                 'success',
-<<<<<<< HEAD
                 'Votre recette a été modifiée avec succès !'
-=======
-                'Votre recette a été modifié avec succès !'
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
             );
 
             return $this->redirectToRoute('recipe.index');
@@ -200,11 +171,7 @@ class RecipeController extends AbstractController
 
         $this->addFlash(
             'success',
-<<<<<<< HEAD
             'Votre recette a été supprimée avec succès !'
-=======
-            'Votre recette a été supprimé avec succès !'
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
         );
 
         return $this->redirectToRoute('recipe.index');
@@ -260,7 +227,6 @@ class RecipeController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-<<<<<<< HEAD
 
     #[Route('/recipe/{id}/download', name: 'recipe_download_pdf')]
     public function downloadPdf(Recipe $recipe, PdfService $pdfService): Response
@@ -283,6 +249,4 @@ class RecipeController extends AbstractController
         return $response;
     }
 
-=======
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
 }

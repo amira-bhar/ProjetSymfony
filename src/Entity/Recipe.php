@@ -345,9 +345,6 @@ class Recipe
 
         return $this->average;
     }
-<<<<<<< HEAD
 
     
-=======
->>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
 }
