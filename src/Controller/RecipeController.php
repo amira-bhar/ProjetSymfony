@@ -47,9 +47,9 @@ class RecipeController extends AbstractController
     
         
         $ingredients = $manager->getRepository(Ingredient::class)->findBy(['user' => $this->getUser()]);
-    
+        $recipesCollection=$manager->getRepository(Recipe::class)->findBy(['user' => $this->getUser()]);
         
-        if (empty($ingredients) and empty($recipes)) {
+        if (empty($ingredients) && empty($recipesCollection)) {
             return $this->render('pages/recipe/emptyindex.html.twig');
         } else {
             return $this->render('pages/recipe/index.html.twig', [

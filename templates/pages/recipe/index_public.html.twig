@@ -1,30 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}L'AtelierGourmand - Recettes de la communauté
-{% endblock %}
+{% block title %}L'AtelierGourmand - Recettes de la communauté{% endblock %}
 
 {% block body %}
-	<div class="container mt-4">
-		{% if not recipes.items is same as([]) %}
-			<h1>Recettes de la communuaté</h1>
+    <div class="container mt-4">
+        <h1>Recettes de la communauté</h1>
 
-			<div class="d-flex justify-content-center flex-wrap">
-				{% for recipe in recipes %}
-					<div class="card border-primary mb-3" style="max-width: 20rem;">
-						<div class="card-header"><strong>Recette n°{{ recipe.id }}</strong></div>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="{{ path('recipe.show', {id: recipe.id}) }}">{{ recipe.name }}</a>
-							</h4>
-							<p class="card-text">{{ recipe.description|slice(0, 100) ~ '...' }}</p>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
+        <!-- Search Form -->
+        <div class="mb-4">
+            <div class="input-group">
+                <input type="text" id="searchInput" class="form-control" placeholder="Rechercher une recette">
+            </div>
+        </div>
 
+        {% if recipes|length > 0 %}
+            <div id="recipesContainer" class="d-flex justify-content-center flex-wrap">
+                {% for recipe in recipes %}
+                    <div class="card border-primary mb-3 recipe-card" style="max-width: 20rem;">
+                        <div class="card-header"><strong>Recette n°{{ recipe.id }}</strong></div>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ path('recipe.show', {id: recipe.id}) }}">{{ recipe.name }}</a>
+                            </h4>
+                            <p class="card-text">{{ recipe.description|slice(0, 100) ~ '...' }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h4>Il n'y a pas de recettes</h4>
+        {% endif %}
+        
+        <div id="noResults" class="d-none">
+            <h4>Aucun résultat.</h4>
+        </div>
+    </div>
+	
+	<!-- Filter results -->
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            let searchTerm = this.value.toLowerCase();
+            let recipes = document.querySelectorAll('.recipe-card');
+            let noResults = document.getElementById('noResults');
+            let hasResults = false;
 
-		{% else %}
-			<h4>Il n'y a pas de recettes</h4>
-		{% endif %}
-	</div>
+            recipes.forEach(function(recipe) {
+                let title = recipe.querySelector('.card-title a').textContent.toLowerCase();
+                let description = recipe.querySelector('.card-text').textContent.toLowerCase();
+
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    recipe.style.display = '';
+                    hasResults = true;
+                } else {
+                    recipe.style.display = 'none';
+                }
+            });
+
+            if (hasResults) {
+                noResults.classList.add('d-none');
+            } else {
+                noResults.classList.remove('d-none');
+            }
+        });
+    </script>
 {% endblock %}
