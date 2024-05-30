@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}L'AtelierGourmand - Mes recettes
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success mt-4">
+				{{ message }}
+			</div>
+		{% endfor %}
+            <h4>Il n'y a pas de recettes.</h4>
+			<h4>Aucun ingrédient disponible pour créer une.</h4>
+            <h4>Commencez par <a href="{{ path('ingredient.new') }}">créer un ingrédient</a>.</h4>
+			
+		
+	</div>
+{% endblock %}

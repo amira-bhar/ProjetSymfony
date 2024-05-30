@@ -1,0 +1,106 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	L'AtelierGourmand -
+	{{ recipe.name }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success mt-4">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		<h1 class="mt-4">{{ recipe.name }}</h1>
+
+		<div class="recipe__image">
+			<img style="max-width: 500px;" src="{{ vich_uploader_asset(recipe, 'imageFile') }}">
+		</div>
+
+		<p><strong>La moyenne de cette recette est de</strong>
+			{{ recipe.average|number_format(2, '.', ',') }}
+			/5</p>
+
+		<div>
+			<span class="badge bg-success">Créée le
+				{{ recipe.createdAt|date('d/m/Y') }}</span>
+		</div>
+
+		<div class="mt-4">
+			{% if recipe.time %}
+				<p><strong>Temps (en minute) :<strong>
+					{# {{ recipe.time | min_to_hour }}</p> #}
+					{{ recipe.time }}</p>
+			{% else %}
+				<p><strong>Temps</strong> non renseigné</p>
+			{% endif %}
+		</div>
+
+		<div class="mt-4">
+			{% if recipe.time %}
+				<p><strong>Difficulté :</strong>
+					{{ recipe.difficulty }}/5</p>
+			{% else %}
+				<p><strong>Difficulté</strong> non renseigné</p>
+			{% endif %}
+		</div>
+
+		<div class="mt-4">
+			{% if recipe.time %}
+				<p>Pour
+					{{ recipe.nbPeople }}
+<<<<<<< HEAD
+					personne(s)</p>
+=======
+					personnes</p>
+>>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
+			{% else %}
+				<p><strong>Nombre de personnes</strong> non renseigné</p>
+			{% endif %}
+		</div>
+
+		<div class="mt-4">
+			{% if recipe.price %}
+				<p><strong>Prix (en €) :</strong>
+					{{ recipe.price }}</p>
+			{% else %}
+				<p><strong>Prix</strong> non renseigné</p>
+			{% endif %}
+		</div>
+
+		<div class="mt-4">
+			<p class="mt-4"><strong>Description </strong></p>
+			{{ recipe.description|raw }}
+		</div>
+
+		<div class="mt-4">
+			<p class="mt-4"><strong>Ingrédients</strong></p>
+			{% for ingredient in recipe.ingredients %}
+				<span class="badge bg-success">{{ ingredient.name }}</span>
+			{% endfor %}
+		</div>
+
+<<<<<<< HEAD
+		{% if app.user and recipe.user != app.user %}
+=======
+		{% if app.user %}
+>>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
+		<div class="mark" style="background-color: skyblue;">
+			{{ form(form) }}
+			</div>
+		{% endif %}
+
+
+<<<<<<< HEAD
+		<div class="mt-4">
+			<a href="{{ path('recipe_download_pdf', {'id': recipe.id}) }}" class="btn btn-success">Télécharger</a>
+		</div>
+
+
+=======
+>>>>>>> 93bfa0a7539343fecd3f958a5b16b745d1080630
+		</div>
+	{% endblock %}
