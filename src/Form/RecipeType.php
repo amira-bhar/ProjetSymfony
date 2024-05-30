@@ -170,12 +170,17 @@ class RecipeType extends AbstractType
                 'choice_label'=>'name',
                 'multiple' => true,
                 'expanded' => true,
+                'constraints'=>[
+                    new Assert\NotNull()
+                    
+                ]
             ])
             ->add('imageFile',VichImageType::class, [
                 'label' => 'Image de la recette',
                 'label_attr' => [
                     'class' => 'form-label mt-4'
-                ]
+                ],
+                'required' => false,
             ])
             ->add('submit',SubmitType::class,[
                 'attr'=>[

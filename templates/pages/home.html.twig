@@ -5,6 +5,11 @@
 
 {% block body %}
 	<div class="container mt-4">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success mt-4">
+				{{ message }}
+			</div>
+		{% endfor %}
 		<div class="jumbotron">
 			<h1 class="display-4">Bienvenue sur L'Atelier Gourmand</h1>
 			<p class="lead">L'Atelier Gourmand est une application qui va vous permettre de créer des recettes à base d'ingrédients que vous aurez vous-même introduire. Vous pourrez partager vos recettes à la communauté du site, ou bien les garder en privé.</p>

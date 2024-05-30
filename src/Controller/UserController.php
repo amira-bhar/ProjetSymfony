@@ -48,7 +48,7 @@ class UserController extends AbstractController
                     'Les informations de votre compte ont bien été modifiées.'
                 );
 
-                return $this->redirectToRoute('recipe.index');
+                return $this->redirectToRoute('home.index');
             } else {
                 $this->addFlash(
                     'warning',
@@ -96,7 +96,7 @@ class UserController extends AbstractController
                 $manager->persist($choosenUser);
                 $manager->flush();
 
-                return $this->redirectToRoute('recipe.index');
+                return $this->redirectToRoute('home.index');
             } else {
                 $this->addFlash(
                     'warning',
