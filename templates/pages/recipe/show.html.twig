@@ -31,7 +31,7 @@
 
 		<div class="mt-4">
 			{% if recipe.time %}
-				<p><strong>Temps (en minute) :<strong>
+				<p><strong>Temps (en minute) :</strong>
 					{# {{ recipe.time | min_to_hour }}</p> #}
 					{{ recipe.time }}</p>
 			{% else %}
@@ -50,9 +50,9 @@
 
 		<div class="mt-4">
 			{% if recipe.time %}
-				<p>Pour
+				<p><strong>Pour</strong>
 					{{ recipe.nbPeople }}
-					personne(s)</p>
+					<strong>personne(s)</strong></p>
 			{% else %}
 				<p><strong>Nombre de personnes</strong> non renseigné</p>
 			{% endif %}
@@ -69,7 +69,7 @@
 
 		<div class="mt-4">
 			<p class="mt-4"><strong>Description </strong></p>
-			{{ recipe.description|raw }}
+			<p>{{ recipe.description }}</p>
 		</div>
 
 		<div class="mt-4">
@@ -80,7 +80,7 @@
 		</div>
 
 		{% if app.user and recipe.user != app.user %}
-		<div class="mark" style="background-color: skyblue;">
+		<div class="mark" style="background-color: rgb(190, 220, 231);">
 			{{ form(form) }}
 			</div>
 		{% endif %}

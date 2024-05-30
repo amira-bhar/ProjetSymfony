@@ -7,42 +7,42 @@
 
     {{ form_start(form) }}
     <div class="form-group">
-        {{ form_label(form.name) }}
+        <strong>{{ form_label(form.name) }}</strong>
         {{ form_widget(form.name) }}
         <div class="form-error">
             {{ form_errors(form.name) }}
         </div>
      </div>
         <div class="form-group">
-        {{ form_label(form.time) }}
+        <strong>{{ form_label(form.time) }}</strong>
         {{ form_widget(form.time) }}
         <div class="form-error">
             {{ form_errors(form.time) }}
         </div>
         </div>
         <div class="form-group">
-        {{ form_label(form.nbPeople) }}
+        <strong>{{ form_label(form.nbPeople) }}</strong>
         {{ form_widget(form.nbPeople) }}
         <div class="form-error">
             {{ form_errors(form.nbPeople) }}
         </div>
         </div>
     <div class="form-group">
-        {{ form_label(form.difficulty) }}
+        <strong>{{ form_label(form.difficulty) }}</strong>
         {{ form_widget(form.difficulty) }}
         <div class="form-error">
             {{ form_errors(form.difficulty) }}
         </div>  
         </div>
     <div class="form-group">
-        {{ form_label(form.description) }}
+        <strong>{{ form_label(form.description) }}</strong>
         {{ form_widget(form.description) }}
         <div class="form-error">
             {{ form_errors(form.description) }}
         </div> 
         </div>
     <div class="form-group">
-        {{ form_label(form.price) }}
+        <strong>{{ form_label(form.price) }}</strong>
         {{ form_widget(form.price) }}
         <div class="form-error">
             {{ form_errors(form.price) }}
@@ -63,6 +63,7 @@
             {{ form_errors(form.isPublic) }}
         </div>
 			</div> 
+    <strong>{{ form_row(form.ingredients) }}</strong>
                    
     {{ form_end(form) }}
    

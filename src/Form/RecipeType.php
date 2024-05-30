@@ -157,20 +157,6 @@ class RecipeType extends AbstractType
                     
                 ]
             ])
-            ->add('submit',SubmitType::class,[
-                'attr'=>[
-                    'class'=>'btn btn-primary mt-4',
-                    
-                ],
-                'label'=>'Créer ma recette ',
-            ])
-
-            ->add('imageFile',VichImageType::class, [
-                'label' => 'Image de la recette',
-                'label_attr' => [
-                    'class' => 'form-label mt-4'
-                ]
-            ])
             ->add('ingredients',EntityType::class, [
                 
                 'class' => Ingredient::class,
@@ -184,6 +170,19 @@ class RecipeType extends AbstractType
                 'choice_label'=>'name',
                 'multiple' => true,
                 'expanded' => true,
+            ])
+            ->add('imageFile',VichImageType::class, [
+                'label' => 'Image de la recette',
+                'label_attr' => [
+                    'class' => 'form-label mt-4'
+                ]
+            ])
+            ->add('submit',SubmitType::class,[
+                'attr'=>[
+                    'class'=>'btn btn-primary mt-4',
+                    
+                ],
+                'label'=>'Créer ma recette ',
             ])
         ;
     }

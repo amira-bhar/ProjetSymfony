@@ -45,11 +45,11 @@ class RecipeController extends AbstractController
             10
         );
     
-        // Récupérer les ingrédients associés à l'utilisateur actuel
+        
         $ingredients = $manager->getRepository(Ingredient::class)->findBy(['user' => $this->getUser()]);
     
-        // Vérifier s'il existe au moins un ingrédient
-        if (empty($ingredients)) {
+        
+        if (empty($ingredients) and empty($recipes)) {
             return $this->render('pages/recipe/emptyindex.html.twig');
         } else {
             return $this->render('pages/recipe/index.html.twig', [
